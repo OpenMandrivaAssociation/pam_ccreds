@@ -11,6 +11,7 @@ Patch:		pam_ccreds-dbnss.patch
 Patch1:		pam_ccreds-4-chkpwd.patch
 Group:		System/Libraries
 License:	GPL
+Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires: pam-devel
 BuildRequires: db_nss-devel >= 4.2.52-5mdk
 BuildRequires: openssl-devel
