@@ -1,6 +1,6 @@
 %define	name	pam_ccreds
 %define	version	4
-%define	release	%mkrel 4
+%define	release	%mkrel 5
 
 Summary:	A caching pam module for disconnected operation
 Name:		%{name}
@@ -10,6 +10,7 @@ Source: 	http://www.padl.com/download/%{name}-%{version}.tar.gz
 Patch0:		pam_ccreds-dbnss.patch
 Patch1:		pam_ccreds-4-chkpwd.patch
 Patch2:		pam_ccreds-strlen.patch
+Patch3:		pam_ccreds-strdup.patch
 Group:		System/Libraries
 License:	GPLv2
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -33,6 +34,7 @@ first sounds.
 %patch0 -p1 -b .dbnss
 %patch1 -p1 -b .helper
 %patch2 -p1 -b .strlen
+%patch3 -p1 -b .strdup
 
 %build
 rm configure
