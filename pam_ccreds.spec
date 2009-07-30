@@ -1,16 +1,14 @@
 %define	name	pam_ccreds
-%define	version	4
-%define	release	%mkrel 5
+%define	version	10
+%define	release	%mkrel 1
 
 Summary:	A caching pam module for disconnected operation
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source: 	http://www.padl.com/download/%{name}-%{version}.tar.gz
-Patch0:		pam_ccreds-dbnss.patch
-Patch1:		pam_ccreds-4-chkpwd.patch
-Patch2:		pam_ccreds-strlen.patch
-Patch3:		pam_ccreds-strdup.patch
+Patch0:		pam_ccreds-10-dbnss.patch
+Patch1:		pam_ccreds-strdup.patch
 Group:		System/Libraries
 License:	GPLv2
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -31,14 +29,11 @@ first sounds.
 
 %prep
 %setup -q
+rm -f acconfig.h
 %patch0 -p1 -b .dbnss
-%patch1 -p1 -b .helper
-%patch2 -p1 -b .strlen
-%patch3 -p1 -b .strdup
+%patch1 -p1 -b .strdup
 
 %build
-rm configure
-touch compile
 autoreconf
 %configure2_5x --libdir=/%{_lib}
 make
@@ -49,14 +44,14 @@ mkdir -p %{buildroot}/%{_lib}/security
 mkdir -p %{buildroot}/%{_sbindir}
 install pam_ccreds.so %{buildroot}/%{_lib}/security
 install cc_dump cc_test %{buildroot}/%{_sbindir}
-install -m4755 ccreds_validate %{buildroot}/%{_sbindir}
+install ccreds_chkpwd %{buildroot}/%{_sbindir}
 mkdir -p %{buildroot}/var/cache
 touch %{buildroot}/var/cache/.security.db
 
 %files
 %defattr(-,root,root,755)
 %doc AUTHORS README ChangeLog pam.conf
-%{_sbindir}/ccreds_validate
+%attr(4755,root,root) %{_sbindir}/ccreds_chkpwd
 %{_sbindir}/cc_dump
 %{_sbindir}/cc_test
 /%{_lib}/security/pam_ccreds.so
@@ -69,5 +64,3 @@ fi
 
 %clean
 rm -rf %{buildroot}
-
-
