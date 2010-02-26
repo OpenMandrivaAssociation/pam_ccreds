@@ -1,6 +1,6 @@
 %define	name	pam_ccreds
 %define	version	10
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Summary:	A caching pam module for disconnected operation
 Name:		%{name}
