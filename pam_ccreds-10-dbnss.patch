@@ -1,0 +1,36 @@
+diff -p -up pam_ccreds-10/cc_db.c.dbnss pam_ccreds-10/cc_db.c
+--- pam_ccreds-10/cc_db.c.dbnss	2009-04-03 03:39:32.000000000 +0200
++++ pam_ccreds-10/cc_db.c	2009-07-30 10:36:37.000000000 +0200
+@@ -23,7 +23,11 @@
+ 
+ #include <sys/file.h>
+ 
+-#ifdef HAVE_DB_H
++#ifdef HAVE_DB_NSS_DB_H
++#include <db_nss/db.h>
++#elif defined(HAVE_DB4_DB_H)
++#include <db4/db.h>
++#elif defined(HAVE_DB_H)
+ #include <db.h>
+ #endif
+ 
+diff -p -up pam_ccreds-10/configure.in.dbnss pam_ccreds-10/configure.in
+--- pam_ccreds-10/configure.in.dbnss	2009-04-03 03:39:32.000000000 +0200
++++ pam_ccreds-10/configure.in	2009-07-30 10:54:08.000000000 +0200
+@@ -69,11 +69,13 @@ fi
+ AC_CHECK_HEADERS(security/pam_appl.h security/pam_misc.h security/pam_modules.h)
+ AC_CHECK_HEADERS(pam/pam_appl.h pam/pam_misc.h pam/pam_modules.h)
+ 
+-AC_CHECK_HEADERS(db.h)
++AC_CHECK_HEADERS(db_nss/db.h)
+ 
+-AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS" found_db_lib=yes],,$LIBS)
++AC_CHECK_LIB(db_nss, main,[LIBS="-ldb_nss $LIBS" found_db_lib=yes],,$LIBS)
+ if test -z "$found_db_lib"; then
+-	AC_CHECK_LIB(db1, main,[LIBS="-ldb1 $LIBS" found_db_lib=yes],,$LIBS)
++	AC_CHECK_HEADERS(db4/db.h)
++	AC_CHECK_HEADERS(db.h)
++	AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS" found_db_lib=yes],,$LIBS)
+ fi
+ 
+ AC_CHECK_LIB(pam, pam_start)

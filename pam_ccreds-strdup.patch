@@ -1,0 +1,30 @@
+diff -p -up pam_ccreds-4/cc_lib.c.strdup pam_ccreds-4/cc_lib.c
+--- pam_ccreds-4/cc_lib.c.strdup	2009-07-27 15:00:02.000000000 +0200
++++ pam_ccreds-4/cc_lib.c	2009-07-27 15:14:40.000000000 +0200
+@@ -131,7 +131,7 @@ int pam_cc_start(const char *service,
+ 	pamcch->flags = cc_flags;
+ 
+ 	if (service != NULL) {
+-		pamcch->service = strdup(service);
++		pamcch->service = x_strdup(service);
+ 		if (pamcch->service == NULL) {
+ 			pam_cc_end(&pamcch);
+ 			return PAM_BUF_ERR;
+@@ -140,7 +140,7 @@ int pam_cc_start(const char *service,
+ 		pamcch->service = NULL;
+ 	}
+ 
+-	pamcch->user = strdup(user);
++	pamcch->user = x_strdup(user);
+ 	if (pamcch->user == NULL) {
+ 		pam_cc_end(&pamcch);
+ 		return PAM_BUF_ERR;
+@@ -150,7 +150,7 @@ int pam_cc_start(const char *service,
+ 		ccredsfile = CCREDS_FILE;
+ 	}
+ 
+-	pamcch->ccredsfile = strdup(ccredsfile);
++	pamcch->ccredsfile = x_strdup(ccredsfile);
+ 	if (pamcch->ccredsfile == NULL) {
+ 		pam_cc_end(&pamcch);
+ 		return PAM_BUF_ERR;
