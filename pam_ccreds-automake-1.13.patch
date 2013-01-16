@@ -1,0 +1,15 @@
+--- pam_ccreds-10/configure.in.bero	2013-01-16 01:57:32.324815182 +0100
++++ pam_ccreds-10/configure.in	2013-01-16 01:57:42.985687129 +0100
+@@ -1,9 +1,9 @@
+-AC_INIT(cc_lib.c)
++AC_INIT(pam_ccreds, 10)
+ AC_CANONICAL_SYSTEM
+ AC_PREFIX_DEFAULT()
+ 
+-AM_INIT_AUTOMAKE(pam_ccreds, 10)
+-AM_CONFIG_HEADER(config.h)
++AM_INIT_AUTOMAKE
++AC_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE
+ 
+ AC_PROG_CC

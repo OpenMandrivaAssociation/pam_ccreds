@@ -1,17 +1,13 @@
-%define	name	pam_ccreds
-%define	version	10
-%define	release	%mkrel 6
-
 Summary:	A caching pam module for disconnected operation
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Source: 	http://www.padl.com/download/%{name}-%{version}.tar.gz
+Name:		pam_ccreds
+Version:	10
+Release:	7
+Source0: 	http://www.padl.com/download/%{name}-%{version}.tar.gz
 Patch0:		pam_ccreds-10-dbnss.patch
 Patch1:		pam_ccreds-strdup.patch
+Patch2:		pam_ccreds-automake-1.13.patch
 Group:		System/Libraries
 License:	GPLv2
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires:	pam-devel
 BuildRequires:	db_nss-devel >= 4.2.52-5mdk
 BuildRequires:	openssl-devel
@@ -30,8 +26,7 @@ first sounds.
 %prep
 %setup -q
 rm -f acconfig.h
-%patch0 -p1 -b .dbnss
-%patch1 -p1 -b .strdup
+%apply_patches
 
 %build
 autoreconf
