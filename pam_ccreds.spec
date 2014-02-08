@@ -1,7 +1,7 @@
 Summary:	A caching pam module for disconnected operation
 Name:		pam_ccreds
 Version:	10
-Release:	7
+Release:	8
 Source0: 	http://www.padl.com/download/%{name}-%{version}.tar.gz
 Patch0:		pam_ccreds-10-dbnss.patch
 Patch1:		pam_ccreds-strdup.patch
