@@ -9,7 +9,7 @@ Patch2:		pam_ccreds-automake-1.13.patch
 Group:		System/Libraries
 License:	GPLv2
 BuildRequires:	pam-devel
-BuildRequires:	db_nss-devel >= 4.2.52-5mdk
+BuildRequires:	db_nss-devel >= 4.2.52-5
 BuildRequires:	openssl-devel
 Url:		http://www.padl.com/
 
