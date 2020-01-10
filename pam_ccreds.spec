@@ -39,7 +39,7 @@ fi
 %prep
 %setup -q
 rm -f acconfig.h
-%apply_patches
+%autopatch -p1
 
 %build
 autoreconf -fi
