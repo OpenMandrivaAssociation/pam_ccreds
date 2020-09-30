@@ -1,7 +1,7 @@
 Summary:	A caching pam module for disconnected operation
 Name:		pam_ccreds
 Version:	10
-Release:	17
+Release:	18
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://www.padl.com/
@@ -43,8 +43,8 @@ rm -f acconfig.h
 
 %build
 autoreconf -fi
-%configure2_5x --libdir=/%{_lib}
-make
+%configure --libdir=/%{_lib}
+%make_build -j1
 
 %install
 mkdir -p %{buildroot}/%{_lib}/security
@@ -54,4 +54,3 @@ install cc_dump cc_test %{buildroot}/%{_sbindir}
 install ccreds_chkpwd %{buildroot}/%{_sbindir}
 mkdir -p %{buildroot}/var/cache
 touch %{buildroot}/var/cache/.security.db
-
