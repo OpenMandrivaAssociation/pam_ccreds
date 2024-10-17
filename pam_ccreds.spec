@@ -4,7 +4,7 @@ Version:	10
 Release:	19
 License:	GPLv2+
 Group:		System/Libraries
-Url:		http://www.padl.com/
+Url:		https://www.padl.com/
 Source0: 	http://www.padl.com/download/%{name}-%{version}.tar.gz
 Patch0:		pam_ccreds-10-dbnss.patch
 Patch1:		pam_ccreds-strdup.patch
