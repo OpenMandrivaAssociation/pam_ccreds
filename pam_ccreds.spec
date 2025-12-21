@@ -9,6 +9,11 @@ Source0: 	http://www.padl.com/download/%{name}-%{version}.tar.gz
 Patch0:		pam_ccreds-10-dbnss.patch
 Patch1:		pam_ccreds-strdup.patch
 Patch2:		pam_ccreds-automake-1.13.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pam-devel
 BuildRequires:	db_nss52-devel
 BuildRequires:	pkgconfig(openssl)
