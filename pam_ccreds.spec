@@ -1,7 +1,7 @@
 Summary:	A caching pam module for disconnected operation
 Name:		pam_ccreds
 Version:	10
-Release:	19
+Release:	20
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://www.padl.com/
